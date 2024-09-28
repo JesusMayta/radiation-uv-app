@@ -9,11 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "#1D1F21",
+        primary: "#FF6600",
+        secondary: "#ff983f",
+        accent: "#ffffa1",
+        textColor: "#F5F5F5"
       },
+      backgroundImage: {
+        imageIndex: "url('./src/assets/img/index-image.png')",
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 };
 export default config;
