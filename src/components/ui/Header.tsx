@@ -19,11 +19,7 @@ export const Header = () => {
 
     const [scroll, setscroll] = useState<number>(0);
 
-    const [loaded, setLoaded] = useState<boolean>(false);
-
     useEffect(() => {
-        setLoaded(true);
-        console.log('dasdasdas');
         window.addEventListener('scroll', () => setscroll(window.scrollY));
     }, []);
 
