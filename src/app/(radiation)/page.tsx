@@ -46,7 +46,7 @@ export default function RadiationPage() {
                             <li>Hay disponibles medidas de prevención simples y efectivas. Se recomienda la protección solar cuando el índice ultravioleta es 3 y superior.</li>
                         </ul>
                     </div>
-                    <figure className="w-1/2 flex justify-center">
+                    <figure className="w-1/2 flex justify-center" data-aos="fade-right">
                         <Image src="/assets/radiationUV.png" width={400} height={400} alt='sun-image' className="hover:scale-110 duration-700" priority={false} />
                     </figure>
                 </div>

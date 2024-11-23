@@ -1,0 +1,19 @@
+.header {
+  @apply fixed inset-x-0 top-0 z-10 transition-all duration-300 text-textColor;
+}
+
+.nav {
+  @apply flex items-center justify-between py-5 md:py-6 px-8 md:px-12 lg:px-20 transition-all duration-500;
+}
+
+.logo-link {
+  @apply -m-1.5 p-1.5 flex items-center gap-x-2 hover:scale-110 duration-500;
+}
+
+.button-mobile {
+  @apply -m-2.5 inline-flex items-center justify-center rounded-md p-2.5;
+}
+
+.animation-line {
+  @apply absolute -bottom-1 left-0 h-1 w-0 bg-gradient-to-r transition-all duration-300 group-hover:w-full rounded-full;
+}
