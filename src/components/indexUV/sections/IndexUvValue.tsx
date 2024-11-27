@@ -26,27 +26,43 @@ export const IndexUvValue = () => {
                 </div>
                 <div className="flex-1">
                     <div className="flex items-center justify-between h-full w-full">
-                        {showLoading ? (
-                            <div className="self-center">
-                                <l-tail-chase
-                                    size="40"
-                                    speed="1.75"
-                                    color="black"
-                                ></l-tail-chase>
+                        <div className="w-1/2 flex justify-center">
+                            {showLoading ? (
+                                <div className="self-center">
+                                    <l-tail-chase
+                                        size="40"
+                                        speed="1.75"
+                                        color="black"
+                                    ></l-tail-chase>
+                                </div>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={handleGetIndexUv}
+                                    className="bg-primary border border-black hover:shadow-2xl hover:ring-8 hover:ring-secondary hover:ring-opacity-20 duration-300 hover:shadow-primary rounded-full h-40 w-40">
+                                    <p className={`${textFont.className} text-white font-semibold`}>Ver índice UV</p>
+                                </button>
+                            )}
+                        </div>
+                        <ol className="w-1/2 flex justify-end">
+                            <div className="flex flex-col gap-y-3 w-1/2">
+                                <li className="flex items-center gap-x-3 w-full justify-start">
+                                    <div className="w-2 h-2 bg-green-700 rounded-full" />
+                                    <p>Baja intensidad</p>
+                                </li>
+                                <li className="flex items-center gap-x-3 w-full justify-start">
+                                    <div className="w-2 h-2 bg-orange-600 rounded-full" />
+                                    <p>Alta</p>
+                                </li>
+                                <li className="flex items-center gap-x-3 w-full justify-start">
+                                    <div className="w-2 h-2 bg-red-700 rounded-full" />
+                                    <p>Muy alta</p>
+                                </li>
+                                <li className="flex items-center gap-x-3 w-full justify-start">
+                                    <div className="w-2 h-2 bg-fuchsia-800 rounded-full" />
+                                    <p>Extremo alta</p>
+                                </li>
                             </div>
-                        ) : (
-                            <button
-                                type="button"
-                                onClick={handleGetIndexUv}
-                                className="bg-primary border border-black hover:shadow-2xl hover:ring-8 hover:ring-secondary hover:ring-opacity-20 duration-300 hover:shadow-primary rounded-full h-40 w-40">
-                                <p className={`${textFont.className} text-white font-semibold`}>Ver índice UV</p>
-                            </button>
-                        )}
-                        <ol>
-                            <li>*</li>
-                            <li>*</li>
-                            <li>*</li>
-                            <li>*</li>
                         </ol>
                     </div>
                 </div>
