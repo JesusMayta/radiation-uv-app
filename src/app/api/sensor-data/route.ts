@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { envVariables } from '@/config';
+
 import mongoose from 'mongoose';
 
 const sensorSchema = new mongoose.Schema({
@@ -43,5 +45,5 @@ export async function GET() {
         return NextResponse.json(sensorData, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: 'Error al obtener los datos' }, { status: 500 });
-    }
-}
+    };
+};
