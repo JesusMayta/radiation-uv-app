@@ -1,77 +1,73 @@
 'use client';
 
+import { getIndexUv } from '@/actions/indexUv/getIndexUv';
 import { textFont } from '@/config/fonts';
+import { useIndexUvStore } from '@/store';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { useState } from 'react';
-import { tailChase } from 'ldrs'
+import Image from 'next/image';
+import { IoWaterOutline } from 'react-icons/io5';
+import { LuClock4, LuCloudSun, LuSun } from "react-icons/lu";
+import { TfiReload } from 'react-icons/tfi';
 
 const currentDate = format(new Date(), 'dd/MM/yyyy', { locale: es });
 
-export const IndexUvValue = () => {
+interface Props {
+    indexValue: number;
+};
 
-    tailChase.register()
-    const [showLoading, setShowLoading] = useState<boolean>(false);
+export const IndexUvValue = ({ indexValue }: Props) => {
 
-    const handleGetIndexUv = () => {
-        setShowLoading(true);
+    const { indexUvInStore, saveIndexUv } = useIndexUvStore();
+
+    const handleGetIndexUv = async () => {
+        const data = await getIndexUv();
+        saveIndexUv(data as number);
     };
 
     return (
-        <div className="h-96 w-4/5 mx-auto lg:mx-0 lg:w-1/2 backdrop-blur-sm bg-white/85 border-2 border-black rounded-3xl">
-            <div className="w-full h-full flex flex-col justify-between p-4">
-                <div className="flex items-baseline gap-2">
-                    <p className={`${textFont.className} font-light`}>La fecha de hoy es: </p>
-                    <p className={`${textFont.className} font-medium`}>{currentDate}</p>
+        <div className="h-fit w-4/5 py-10 mx-auto lg:mx-0 lg:w-1/2 backdrop-blur-lg bg-white/85 border-2 border-black rounded-3xl relative">
+            <Image src="/assets/index-image-logo-1.png" width={1000} height={1000} alt='sun-and-earth-image' className="absolute right-40 inset-y-0 blur-sm opacity-25 h-full w-[60%] -z-20" priority />
+            <div className="w-full px-8">
+                <div className="flex justify-between items-center">
+                    <div className="flex flex-col">
+                        <h2 className={`${textFont.className} font-semibold text-3xl`}>Índice UV</h2>
+                        <p>{currentDate}</p>
+                    </div>
+                    <LuSun className="text-primary w-8 h-8 animate-pulse" />
                 </div>
-                <div className="flex-1">
-                    <div className="flex items-center justify-between h-full w-full">
-                        <div className="w-1/2 flex justify-center">
-                            {showLoading ? (
-                                <div className="self-center">
-                                    <l-tail-chase
-                                        size="40"
-                                        speed="1.75"
-                                        color="black"
-                                    ></l-tail-chase>
-                                </div>
-                            ) : (
-                                <button
-                                    type="button"
-                                    onClick={handleGetIndexUv}
-                                    className="bg-primary border border-black hover:shadow-2xl hover:ring-8 hover:ring-secondary hover:ring-opacity-20 duration-300 hover:shadow-primary rounded-full h-40 w-40">
-                                    <p className={`${textFont.className} text-white font-semibold`}>Ver índice UV</p>
-                                </button>
-                            )}
-                        </div>
-                        <ol className="w-1/2 flex justify-end">
-                            <div className="flex flex-col gap-y-3 w-1/2">
-                                <li className="flex items-center gap-x-3 w-full justify-start">
-                                    <div className="w-2 h-2 bg-green-700 rounded-full" />
-                                    <p>Baja intensidad</p>
-                                </li>
-                                <li className="flex items-center gap-x-3 w-full justify-start">
-                                    <div className="w-2 h-2 bg-orange-600 rounded-full" />
-                                    <p>Alta</p>
-                                </li>
-                                <li className="flex items-center gap-x-3 w-full justify-start">
-                                    <div className="w-2 h-2 bg-red-700 rounded-full" />
-                                    <p>Muy alta</p>
-                                </li>
-                                <li className="flex items-center gap-x-3 w-full justify-start">
-                                    <div className="w-2 h-2 bg-fuchsia-800 rounded-full" />
-                                    <p>Extremo alta</p>
-                                </li>
-                            </div>
-                        </ol>
+
+                <div className="mt-5 flex justify-between items-center">
+                    <p className={`${textFont.className} font-semibold text-7xl`}>{indexUvInStore || indexValue}</p>
+                    <p className={`${textFont.className} font-semibold text-gray-500`}>Alto</p>
+                </div>
+
+                <div className="w-full">
+                    <progress className="progress progress-primary w-full transition-all duration-300" value={`${indexUvInStore || indexValue}`} max="20"></progress>
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-sm mt-5">
+                    <div className="flex items-center space-x-2">
+                        <LuClock4 className="w-5 h-5 text-primary" />
+                        <span>Mayor intensidad: 10:00 AM - 4:00 PM</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <IoWaterOutline className="w-5 h-5 text-primary" />
+                        <span>Reflejo: Agua 100%, Arena 15%, Nieve 80%</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <LuCloudSun className="w-5 h-5 text-primary" />
+                        <span>Nubes reducen UV parcialmente</span>
                     </div>
                 </div>
-                <p className="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nam ab reiciendis odit dignissimos placeat. Suscipit in ipsam sapiente earum? Delectus odio eius totam suscipit quisquam quae ullam temporibus dolorem?AOS
-                </p>
-            </div >
-            <button className="">
-
-            </button>
+                <div className="w-full mt-3">
+                    <button
+                        onClick={handleGetIndexUv}
+                        className="bg-primary rounded-lg py-1.5 text-white w-full flex justify-center items-center gap-2 shadow-lg shadow-secondary">
+                        <TfiReload className="w-5 h-5" />
+                        <p className={`${textFont.className} font-semibold`}>Actualizar indice UV</p>
+                    </button>
+                </div>
+            </div>
         </div >
     );
 };

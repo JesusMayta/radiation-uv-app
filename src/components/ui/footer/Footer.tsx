@@ -3,8 +3,8 @@ import { FaSun } from "react-icons/fa";
 
 export const Footer = () => {
     return (
-        <footer className="text-textColor border-t border-accent">
-            <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <footer>
+            {/* <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
                 <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
                     <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
                         <FaSun className="text-4xl text-accent" />
@@ -70,7 +70,7 @@ export const Footer = () => {
                         </a>
                     </span>
                 </div>
-            </div>
+            </div> */}
         </footer>
     );
 };

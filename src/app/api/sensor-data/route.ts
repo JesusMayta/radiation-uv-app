@@ -10,7 +10,7 @@ const sensorSchema = new mongoose.Schema({
 
 const MONGODB_URI = "mongodb+srv://rimverse:rimverse04041998@radiationuvdb.evbgd.mongodb.net/";
 
-const SensorData = mongoose.models.SensorData || mongoose.model('SensorData', sensorSchema);
+const indexUv = mongoose.models.indexUv || mongoose.model('indexUv', sensorSchema, 'indexUv');
 
 // Conexión a la base de datos
 async function connectToDatabase() {
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     try {
         await connectToDatabase();
-        const sensorData = new SensorData({ uvIndex });
+        const sensorData = new indexUv({ uvIndex });
         await sensorData.save();
         return NextResponse.json({ message: 'Datos recibidos y almacenados' }, { status: 200 });
     } catch (error) {
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 export async function GET() {
     try {
         await connectToDatabase();
-        const sensorData = await SensorData.find().sort({ timestamp: -1 }).limit(10);
+        const sensorData = await indexUv.find();
         return NextResponse.json(sensorData, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: 'Error al obtener los datos' }, { status: 500 });
