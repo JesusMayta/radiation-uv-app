@@ -5,3 +5,7 @@ export const indexInfo = [
     { name: 'Muy alta', number: '8 a 10', color: 'from-red-900 via-red-300 to-red-500', type: 'Alto riesgo' },
     { name: 'Extremadamente alta', number: '11 a +', color: 'from-fuchsia-900 via-fuchsia-300 to-fuchsia-500', type: 'Muy peligroso' },
 ];
+
+export const indexUvToCard = [
+
+]

@@ -5,4 +5,4 @@ const sensorSchema = new mongoose.Schema({
     time: { type: Date, default: Date.now }
 });
 
-export const SensorData = mongoose.model('SensorData', sensorSchema, 'SensorData');
+export const indexUv = mongoose.models.indexUv || mongoose.model('indexUv', sensorSchema, 'indexUv');

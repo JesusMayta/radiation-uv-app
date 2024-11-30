@@ -5,3 +5,5 @@ export { SectionCardsUV } from './sections/SectionCardsUV';
 
 export { CardsIndexUv } from './indexUV/cards/CardsIndexUv'
 export { IndexUvValue } from './indexUV/sections/IndexUvValue';
+export { InfoMed } from './indexUV/sections/InfoMed';
+export { FototypeSkin } from './indexUV/cards/FototypeSkin';
