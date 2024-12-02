@@ -1,13 +1,16 @@
 'use client';
 
 import { textFont } from '@/config/fonts';
-import { Field, Form, Formik } from 'formik';
+import { initialValuesMedForm, medFormValidations } from '@/helpers';
+import { fototypesList } from '@/utils';
+import clsx from 'clsx';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Image from 'next/image';
 
 export const InfoMed = () => {
 
-    const handleSubmit = () => {
-        console.log('sdsadas');
+    const handleSubmit = (values: any) => {
+        console.log(values);
     };
 
     return (
@@ -20,39 +23,45 @@ export const InfoMed = () => {
                 <h3 className={`${textFont.className} font-semibold text-2xl`}>Calcula tu tiempo de exposición</h3>
                 <p className="mt-2">Ingresa tus datos</p>
                 <Formik
-                    initialValues={{ email: '' }}
+                    initialValues={initialValuesMedForm}
+                    validationSchema={medFormValidations}
                     onSubmit={handleSubmit}
                 >
-                    {({ touched, errors }) => (
+                    {({ values, touched, errors, handleChange }) => (
                         <Form className="w-full mt-4">
                             <div className="flex gap-3">
                                 <div className="flex flex-col w-1/2">
-                                    <label htmlFor="firstName">Tu edad:</label>
+                                    <label htmlFor="firstName">Nombre completo:</label>
                                     <Field
-                                        type="number"
-                                        name="age"
-                                        className="rounded-md border border-black/20 mt-1 py-1 px-4 outline-none"
+                                        name="completeName"
+                                        id="completeName"
+                                        type="text"
+                                        className={clsx('rounded-md border border-black/20 mt-1 py-1 px-4 outline-none')}
                                     />
+                                    <ErrorMessage name="completeName" component="div" className="text-red-600 text-xs font-semibold" />
                                 </div>
 
                                 <div className="flex flex-col w-1/2">
                                     <label htmlFor="firstName">Fototipo de piel:</label>
                                     <Field as="select" name="fototype" className="mt-1 rounded-md border border-black/20 outline-none py-1">
-                                        <option value="red">Fototipo 1</option>
-                                        <option value="green">Green</option>
-                                        <option value="blue">Blue</option>
+                                        {fototypesList.map((fototype) => (
+                                            <option key={fototype.id} value={fototype.id}>{fototype.name}</option>
+                                        ))}
                                     </Field>
                                 </div>
                             </div>
-
                             <div className="flex items-center gap-3 mt-4">
                                 <div className="flex flex-col w-1/2">
-                                    <label htmlFor="firstName">Portector solar (FPS):</label>
+                                    <label htmlFor="firstName">Tu edad:</label>
                                     <Field
-                                        type="number"
                                         name="age"
-                                        className="rounded-md border border-black/20 mt-1 py-1 px-4 outline-none"
-                                    />
+                                        id="age"
+                                        placeholder="Tu edad"
+                                        type="text"
+                                        className={clsx('mt-1 rounded-lg border border-black/20 outline-none py-2 px-4', {
+                                            'border border-red-500': errors.age
+                                        })} />
+                                    <ErrorMessage name="age" component="div" className="text-red-600 text-xs font-semibold" />
                                 </div>
 
                                 <button type="submit" className="w-1/2 bg-primary text-white rounded-lg shadow-xl shadow-primary h-8 mt-6">
