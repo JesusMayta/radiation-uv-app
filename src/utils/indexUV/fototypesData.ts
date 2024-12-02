@@ -29,3 +29,14 @@ export const fototypeOptions = {
         }
     },
 };
+
+
+export const fototypesList = [
+    { id: 1, name: 'Fotitpo I' },
+    { id: 2, name: 'Fotitpo II' },
+    { id: 3, name: 'Fotitpo III' },
+    { id: 4, name: 'Fotitpo IV' },
+    { id: 5, name: 'Fotitpo V' },
+    { id: 6, name: 'Fotitpo VI' },
+    { id: 7, name: 'Fotitpo VII' }
+];
