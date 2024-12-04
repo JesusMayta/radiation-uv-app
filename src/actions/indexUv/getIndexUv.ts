@@ -2,7 +2,7 @@
 
 import { connectToDatabase, indexUv } from '@/mongoDB';
 
-export const getIndexUv = async (): Promise<Number> => {
+export const getIndexUv = async (): Promise<number> => {
 
     try {
         await connectToDatabase();
