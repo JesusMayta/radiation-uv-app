@@ -1,23 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { envVariables } from '@/config';
-
-import mongoose from 'mongoose';
-
-const sensorSchema = new mongoose.Schema({
-    uvIndex: Number,
-    timestamp: { type: Date, default: Date.now }
-});
-
-const MONGODB_URI = "mongodb+srv://rimverse:rimverse04041998@radiationuvdb.evbgd.mongodb.net/";
-
-const indexUv = mongoose.models.indexUv || mongoose.model('indexUv', sensorSchema, 'indexUv');
-
-// Conexión a la base de datos
-async function connectToDatabase() {
-    if (!mongoose.connection.readyState) {
-        await mongoose.connect(MONGODB_URI);
-    }
-}
+import { connectToDatabase, indexUv } from '@/mongoDB';
 
 // POST handler
 export async function POST(req: NextRequest) {
