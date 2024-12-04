@@ -4,14 +4,13 @@ export const fototypeData = {
     datasets: [
         {
             label: 'Distribución de Fototipos',
-            data: [14.28, 14.28, 14.28, 14.28, 14.28, 14.28, 14.28],
+            data: [16.66, 16.66, 16.66, 16.66, 16.66, 16.66],
             backgroundColor: [
                 'rgb(253, 221, 202)',
                 'rgb(252, 220, 201)',
                 'rgb(249, 221, 203)',
                 'rgb(249, 197, 178)',
                 'rgb(234, 184, 161)',
-                'rgb(212, 167, 110)',
                 'rgb(141, 91, 62)',
             ],
             borderColor: 'rgb(141, 91, 62)',
@@ -30,13 +29,17 @@ export const fototypeOptions = {
     },
 };
 
+export interface FototypeProps {
+    id: number;
+    label: string;
+    med: number
+};
 
-export const fototypesList = [
-    { id: 1, name: 'Fotitpo I' },
-    { id: 2, name: 'Fotitpo II' },
-    { id: 3, name: 'Fotitpo III' },
-    { id: 4, name: 'Fotitpo IV' },
-    { id: 5, name: 'Fotitpo V' },
-    { id: 6, name: 'Fotitpo VI' },
-    { id: 7, name: 'Fotitpo VII' }
-];
+export const fototypesInputs: FototypeProps[] = [
+    { id: 1, label: 'I - Muy clara', med: 200 },
+    { id: 2, label: 'II - Clara', med: 250 },
+    { id: 3, label: 'III - Morena clara', med: 350 },
+    { id: 4, label: 'IV - Morena moderada', med: 450 },
+    { id: 5, label: 'V - Morena oscura', med: 600 },
+    { id: 6, label: 'VI - Negra', med: 1000 },
+]

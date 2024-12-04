@@ -19,7 +19,7 @@ export default async function IndexUvPage() {
                     {/* <Image src="/assets/index-image-logo-1.png" width={1000} height={1000} alt='sun-and-earth-image' className="hidden lg:block  lg:w-1/2" priority /> */}
                     <Image src="/assets/index-image-logo.png" width={1000} height={1000} alt='boy-and-sun-image' className="w-full lg:w-1/2" priority />
                 </div>
-                <IndexUvValue indexValue={indexUvValue} />
+                <IndexUvValue indexValue={indexUvValue as number} />
                 <CardsIndexUv />
             </section>
 
