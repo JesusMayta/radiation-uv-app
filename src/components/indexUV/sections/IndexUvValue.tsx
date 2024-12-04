@@ -3,7 +3,7 @@
 import { getIndexUv } from '@/actions/indexUv/getIndexUv';
 import { textFont } from '@/config/fonts';
 import { useIndexUvStore } from '@/store';
-import { FototypeProps, fototypesInputs } from '@/utils';
+import { fototypesInputs } from '@/utils';
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import clsx from 'clsx';
 import { format } from 'date-fns';
