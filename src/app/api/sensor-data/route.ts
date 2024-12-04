@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
         await sensorData.save();
         return NextResponse.json({ message: 'Datos recibidos y almacenados' }, { status: 200 });
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ error: 'Error al almacenar los datos' }, { status: 500 });
     }
 }
@@ -26,6 +27,7 @@ export async function GET() {
         const sensorData = await indexUv.find();
         return NextResponse.json(sensorData, { status: 200 });
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ error: 'Error al obtener los datos' }, { status: 500 });
     };
 };

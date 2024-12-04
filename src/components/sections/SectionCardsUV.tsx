@@ -1,8 +1,5 @@
 import { textFont } from '@/config/fonts';
 import { InfoCards } from '@/utils';
-import React from 'react'
-import { LuShield, LuWaves } from 'react-icons/lu';
-import { PiLightningFill } from 'react-icons/pi';
 
 export const SectionCardsUV = () => {
     return (
